@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuenta Cuentos</title>
+  <link href="./css/tailwind.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #a69f9d; /* Fondo oscuro */
+      color: #fcfcfc; /* Color de texto claro */
+    }
+    a, button {
+      outline: none; /* Eliminar el contorno predeterminado */
+    }
+    a:focus, button:focus {
+      outline: 2px solid #4299e1; /* Agregar contorno de enfoque personalizado */
+      outline-offset: 2px;
+    }
+    .contrast-bg {
+      background-color: #4e5564; /* Fondo más oscuro para las secciones */
+    }
+    .contrast-text {
+      color: #f6f9fc; /* Color de texto más claro para las secciones */
+    }
+    .highlight {
+      background-color: #334b3c; /* Color de resaltado */
+      color: #f3f5f8; /* Color del texto para los elementos resaltados */
+    }
+    .movie-card {
+      width: 250px; /* Ancho fijo */
+      height: 700px; /* Altura fija */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .movie-card img {
+      height: 250px; /* Alto fijo para la imagen */
+      alt="[Título del cuento]" /* Añadido texto alternativo para las imágenes */
+    }
+    .movie-card .movie-details {
+      flex-grow: 1;
+    }
+    .search-container {
+      display: flex;
+      align-items: center;
+    }
+    .search-box {
+      width: 50%; /* Ancho del cuadro de búsqueda ajustado a la mitad de la página */
+      padding: 8px;
+      border: 1px solid #000;
+      border-radius: 4px 0 0 4px;
+      margin-right: 10px; /* Espacio entre el cuadro de búsqueda y el botón */
+      background-color: #e0f7fa; /* Color de fondo del cuadro de búsqueda */
+      color: #000; /* Color del texto en el cuadro de búsqueda */
+    }
+    .search-button {
+      padding: 8px 15px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    .search-button:hover {
+      background-color: #0056b3;
+    }
+    .alto-contraste {
+      background-color: black;
+      color: yellow;
+    }
+    .color-cambio {
+    transition: color 0.3s ease; /* Esto añade una transición suave al cambio de color */
+}
+
+.color-cambio:hover {
+    color: red; /* Cambia el color del texto a rojo cuando pasas el cursor sobre el enlace */
+}
+
+    #trendingPreview {
+      display: flex; /* Usar flexbox */
+      flex-wrap: nowrap; /* Evitar que los elementos se envuelvan a la siguiente línea */
+      overflow-x: auto; /* Agregar desplazamiento horizontal si los elementos no caben en la pantalla */
+      justify-content: center; /* Centrar los elementos en el contenedor */
+    }
+  </style>
+</head>
+<body class="bg-gray-200" tabindex="0">
+  <header class="bg-slate-800 text-white p-4" role="banner">
+    <div class="container mx-auto flex justify-center items-center">
+      <h1 class="text-2xl font-bold">Cuenta Cuentos</h1>
+      <button onclick="toggleHighContrast()" aria-label="Alternar modo de alto contraste" class="bg-blue-500 text-black p-2 rounded ml-4">🔲 Alto Contraste</button>
+    </div>
+  </header>
+  <nav class="bg-slate-800 text-white p-4" role="navigation">
+    <div class="container mx-auto flex items-center">
+      <a href="#" class="text-white mx-2">Inicio</a>
+      <a href="cuentos.html" class="text-white mx-2">Cuentos</a>
+    </div>
+  </nav>
+  <!-- Sección de búsqueda -->
+  
+  <!-- Sección Películas -->
+  <section id="trendingPreview" class="container mx-auto flex flex-row flex-wrap justify-center">
+    <!-- Tarjeta de película 1 -->
+    <div class="bg-white p-4 rounded shadow-md m-4 contrast-bg movie-card" aria-labelledby="movieTitle1">
+      <img src="imagenes/Los 3 Chanchitos.jpg" alt="Cartel de la película 1" class="w-full object-cover rounded-t-md">
+      <div class="mt-4 movie-details">
+        <h3 id="movieTitle1" class="text-lg font-bold contrast-text">Los 3 Chanchitos</h3>
+        <button onclick="speakText('Los 3 Chanchitos.Habia una vez, tres cerditos que construyen casas de paja, madera y ladrillos. Un lobo derriba las casas de paja y madera, pero no puede destruir la de ladrillos. Los cerditos se refugian en la casa de ladrillos, aprendiendo sobre la importancia del esfuerzo y la planificación. ')" aria-label="Leer descripción del cuento 1" class="bg-blue-500 text-white p-2 rounded highlight">🔊 Leer</button>
+        <p class="text-gray-300 mt-2">Había una vez, tres cerditos construyen casas de paja, madera y ladrillos. Un lobo derriba las casas de paja y madera, pero no puede destruir la de ladrillos. Los cerditos se refugian en la casa de ladrillos, aprendiendo sobre la importancia del esfuerzo y la planificación.</p>
+        <a href="cuentos.html" class="text-red-600 mx-2 underline">Leer cuento completo</a>
+      </div>
+    </div>
+    
+    <!-- Movie Card 2 -->
+    <div class="bg-white p-4 rounded shadow-md m-4 contrast-bg movie-card" aria-labelledby="movieTitle2">
+      <img src="imagenes/La Ratita Presumida.jpg" alt="Cartel de la película 2" class="w-full object-cover rounded-t-md">
+      <div class="mt-4 movie-details">
+        <h3 id="movieTitle2" class="text-lg font-bold contrast-text">La Ratita Presumida</h3>
+        <button onclick="speakText('Habia una vez Una ratita presumida que encuentro una moneda y la usa para comprar un lazo.Se burla de otros animales por su apariencia.Un zorro la atrapa, pero ella le ruega que la libere y promete ser humilde.El zorro la libera y la ratita aprende su lección. ')" aria-label="Leer descripción del cuento 2" class="bg-blue-500 text-white p-2 rounded highlight">🔊 Leer</button>
+        <p class="text-gray-300 mt-2">Había una vez una ratita presumida encuentra una moneda y la usa para comprar un lazo.Se burla de otros animales por su apariencia.Un zorro la atrapa, pero ella le ruega que la libere y promete ser humilde.El zorro la libera y la ratita aprende su lección.</p>
+        
+        <a href="cuentos.html" class="text-red-600 mx-2 underline">Leer cuento completo</a>
+      </div>
+    </div>
+    <!-- Movie Card 3 -->
+    <div class="bg-white p-4 rounded shadow-md m-4 contrast-bg movie-card" aria-labelledby="movieTitle3">
+      <img src="imagenes/la-cenicienta.jpg" alt="Cartel de la película 3" class="w-full object-cover rounded-t-md">
+      <div class="mt-4 movie-details">
+        <h3 id="movieTitle3" class="text-lg font-bold contrast-text">La Cenicienta</h3>
+        <button onclick="speakText('Habia una vez una Cenicienta maltratada asiste al baile con ayuda del hada madrina.Pierde zapatilla y el príncipe la encuentra.Cenicienta y el príncipe se casan y viven felices. ')" aria-label="Leer descripción del cuento 3" class="bg-blue-500 text-white p-2 rounded highlight">🔊 Leer</button>
+        <p class="text-gray-300 mt-2">Había una vez una Cenicienta maltratada asiste al baile con ayuda del hada madrina.Pierde zapatilla y el príncipe la encuentra.Cenicienta y el príncipe se casan y viven felices.</p>
+        <a href="cuentos.html" class="text-red-600 mx-2 underline">Leer cuento completo</a>
+      </div>
+    </div>
+    <!-- Movie Card 4 -->
+    <div class="bg-white p-4 rounded shadow-md m-4 contrast-bg movie-card" aria-labelledby="movieTitle4">
+      <img src="imagenes/Pinocho.jpg" alt="Cartel de la película 4" class="w-full object-cover rounded-t-md">
+      <div class="mt-4 movie-details">
+        <h3 id="movieTitle4" class="text-lg font-bold contrast-text">Pinocho</h3>
+        <button onclick="speakText('Habia una vez una marioneta que se llamaba Pinocho cobra vida y busca ser niño real.Miente y desobedece, pero aprende de sus errores.Salva a Geppetto y se convierte en un niño de verdad.Ser bueno te hace real. ')" aria-label="Leer descripción del cuento 4" class="bg-blue-500 text-white p-2 rounded highlight">🔊 Leer</button>
+        <p class="text-gray-300 mt-2">Había una vez una marioneta que se llamaba Pinocho cobra vida y busca ser niño real.Miente y desobedece, pero aprende de sus errores.Salva a Geppetto y se convierte en un niño de verdad.Ser bueno te hace real.</p>
+        <a href="cuentos.html" class="text-red-600 mx-2 underline">Leer cuento completo</a>
+      </div>
+    </div>
+    <!-- Movie Card 5 -->
+    <div class="bg-white p-4 rounded shadow-md m-4 contrast-bg movie-card" aria-labelledby="movieTitle5">
+      <img src="imagenes/El zapatero y los duendes.jpg" alt="Cartel de la película 5" class="w-full object-cover rounded-t-md">
+      <div class="mt-4 movie-details">
+        <h3 id="movieTitle5" class="text-lg font-bold contrast-text">El zapatero y los duendes</h3>
+        <button onclick="speakText('Habia una vez Un zapatero y su esposa son muy pobres.En Nochebuena, duendes mágicos ayudan al zapatero a hacer hermosos zapatos.El zapatero vende los zapatos y gana mucho dinero.Los duendes nunca más regresan, pero el zapatero y su esposa son felices para siempre. ')" aria-label="Leer descripción del cuento 5" class="bg-blue-500 text-white p-2 rounded highlight">🔊 Leer</button>
+        <p class="text-gray-300 mt-2">Había una vez Un zapatero y su esposa son muy pobres.En Nochebuena, duendes mágicos ayudan al zapatero a hacer hermosos zapatos.El zapatero vende los zapatos y gana mucho dinero.Los duendes nunca más regresan, pero el zapatero y su esposa son felices para siempre.</p>
+        <a href="cuentos.html" class="text-red-600 mx-2 underline">Leer cuento completo</a>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-slate-800 text-white p-4 mt-8">
+    <div class="container mx-auto text-center">
+      <p>© 2024 Tus cuentos favoritos. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  <script>
+    let currentlySpeaking = false;
+
+    function speakText(text) {
+      if (currentlySpeaking) {
+        // Si ya se está hablando, detén la síntesis de voz actual
+        window.speechSynthesis.cancel();
+        currentlySpeaking = false;
+      } else {
+        // Si no se está hablando, inicia una nueva síntesis de voz
+        const speech = new SpeechSynthesisUtterance();
+        speech.lang = 'es-ES';
+        speech.text = text;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        window.speechSynthesis.speak(speech);
+        currentlySpeaking = true;
+      }
+    }
+
+    function speakFocusedElement() {
+      const focusedElement = document.activeElement;
+      if (focusedElement && focusedElement.tagName !== 'BODY') {
+        const text = focusedElement.innerText || focusedElement.value || focusedElement.alt || focusedElement.ariaLabel;
+        if (text) {
+          speakText(text);
+        }
+      }
+    }
+
+    function toggleHighContrast() {
+      document.body.classList.toggle('alto-contraste');
+    }
+
+    // Agregar detector de eventos para leer en voz alta elementos enfocados y manejar la navegación por pestañas
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Tab') {
+        setTimeout(speakFocusedElement, 0);
+      }
+    });
+  </script>
+</body>
+</html>

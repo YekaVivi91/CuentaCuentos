@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuenta Cuentos</title>
+  <link href="./css/tailwind.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #a69f9d; /* Fondo oscuro */
+      color: #fcfcfc; /* Color de texto claro */
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px;
+    }
+    .cuento-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .cuento-container img {
+      width: 150px; /* Ajusta el ancho de la imagen */
+      height: 20px;
+      margin-right: 20px; /* Espacio entre la imagen y el texto */
+      transition: width 0.3s ease;
+    }
+    .cuento-container img.expand {
+      width: 100px; /* Nuevo tamaño de la imagen al expandirse */
+    }
+    .cuento-texto {
+      flex-grow: 1;
+    }
+    .contrast-bg {
+      background-color: #4e5564; /* Fondo más oscuro para las secciones */
+    }
+    .contrast-text {
+      color: #f6f9fc; /* Color de texto más claro para las secciones */
+    }
+    .highlight {
+      background-color: #334b3c; /* Color de resaltado */
+      color: #f3f5f8; /* Color del texto para los elementos resaltados */
+    }
+    .search-container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 20px; /* Espacio inferior entre la barra de búsqueda y los cuentos */
+    }
+    .search-box {
+      width: 50%; /* Ancho del cuadro de búsqueda ajustado a la mitad de la página */
+      padding: 8px;
+      border: 1px solid #000;
+      border-radius: 4px 0 0 4px;
+      margin-right: 10px; /* Espacio entre el cuadro de búsqueda y el botón */
+      background-color: #e0f7fa; /* Color de fondo del cuadro de búsqueda */
+      color: #000; /* Color del texto en el cuadro de búsqueda */
+    }
+    .search-button {
+      padding: 8px 15px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    .search-button:hover {
+      background-color: #0056b3;
+    }
+    .alto-contraste {
+      background-color: black;
+      color: yellow;
+    }
+    .full-story {
+      display: none; /* inicialmente oculto */
+      margin-top: 10px; /* Espacio superior */
+    }
+    .full-story.show {
+      display: block; /* Mostrar cuando la clase 'show' está presente */
+    }
+    /* Estilos para centrar el texto del encabezado */
+header h1 {
+  text-align: center;
+}
+
+/* Estilos para centrar el texto del pie de página */
+footer p {
+  text-align: center;
+}
+
+  </style>
+</head>
+<body class="bg-gray-200" tabindex="0">
+  <header class="bg-slate-800 text-white p-4" role="banner">
+    <div class="container mx-auto flex justify-center items-center">
+      <h1 class="text-2xl font-bold">Cuenta Cuentos</h1>
+      <button onclick="toggleHighContrast()" aria-label="Alternar modo de alto contraste" class="bg-blue-500 text-black p-2 rounded ml-4">🔲 Alto Contraste</button>
+    </div>
+  </header>
+  <nav class="bg-slate-800 text-white p-4" role="navigation">
+    <div class="container mx-auto flex items-center">
+      <a href="index.html" class="text-white mx-2">Inicio</a>
+      <a href="#" class="text-white mx-2">Cuentos</a>
+      
+    </div>
+  </nav>
+
+ 
+  <!-- Sección de Cuentos -->
+  <section id="trendingPreview" class="container mx-auto flex flex-row flex-wrap justify-center">
+    <!-- Tarjeta de cuento 1 -->
+<div class="bg-white p-4 rounded shadow-md m-4 contrast-bg movie-card" aria-labelledby="movieTitle1">
+  <img src="imagenes/Los 3 Chanchitos.jpg" alt="Cartel de la película 1" class="w-full object-cover rounded-t-md">
+  <div class="mt-4 movie-details">
+    <h3 id="movieTitle1" class="text-lg font-bold contrast-text">Los 3 Chanchitos</h3>
+    <button onclick="toggleFullStory('story1')" aria-label="Leer descripción del cuento 1" class="bg-blue-500 text-white p-2 rounded highlight">📖 Leer</button>
+    <button onclick="speakText(' Había una vez tres cerditos que decidieron construir sus propias casas. El primer cerdito construyó una casa de paja porque era rápido y fácil. El segundo cerdito construyó una casa de madera, un poco más fuerte que la de paja, pero aún así, sencilla de hacer. El tercer cerdito trabajó duro y construyó una casa de ladrillos, fuerte y resistente.Un día, llegó el lobo feroz. Se dirigió a la casa de paja y dijo: —¡Cerdito, cerdito, déjame entrar! —¡No, no, por el pelo de mi barbilla no te dejaré entrar! —contestó el cerdito. —Entonces soplaré y soplaré y tu casa derribaré —dijo el lobo. Y así lo hizo. El cerdito corrió a la casa de su hermano de madera.El lobo llegó a la casa de madera y repitió: —¡Cerdito, cerdito, déjame entrar! —¡No, no, por el pelo de mi barbilla no te dejaré entrar! —respondió el cerdito. —Entonces soplaré y soplaré y tu casa derribaré —amenazó el lobo. Y sopló, derribando la casa. Los dos cerditos corrieron a la casa de ladrillos.El lobo llegó a la casa de ladrillos y dijo: —¡Cerditos, cerditos, déjenme entrar! —¡No, no, por el pelo de mi barbilla no te dejaremos entrar! —respondieron los cerditos. —Entonces soplaré y soplaré y su casa derribaré —gritó el lobo. Pero por más que sopló, no pudo derribar la casa de ladrillos.Frustrado, el lobo intentó entrar por la chimenea, pero los cerditos encendieron una gran hoguera y cuando el lobo bajó, se quemó y huyó para no volver jamás. Los tres cerditos vivieron seguros y felices en la casa de ladrillos, aprendiendo que el trabajo arduo y bien hecho siempre da buenos resultados.')" aria-label="Escuchar descripción del cuento 1" class="bg-blue-500 text-white p-2 rounded highlight">🔊 Leer</button>
+    <p id="story1" class="text-gray-300 mt-2 full-story">Había una vez tres cerditos que decidieron construir sus propias casas. El primer cerdito construyó una casa de paja porque era rápido y fácil. El segundo cerdito construyó una casa de madera, un poco más fuerte que la de paja, pero aún así, sencilla de hacer. El tercer cerdito trabajó duro y construyó una casa de ladrillos, fuerte y resistente.Un día, llegó el lobo feroz. Se dirigió a la casa de paja y dijo: —¡Cerdito, cerdito, déjame entrar! —¡No, no, por el pelo de mi barbilla no te dejaré entrar! —contestó el cerdito. —Entonces soplaré y soplaré y tu casa derribaré —dijo el lobo. Y así lo hizo. El cerdito corrió a la casa de su hermano de madera.El lobo llegó a la casa de madera y repitió: —¡Cerdito, cerdito, déjame entrar! —¡No, no, por el pelo de mi barbilla no te dejaré entrar! —respondió el cerdito. —Entonces soplaré y soplaré y tu casa derribaré —amenazó el lobo. Y sopló, derribando la casa. Los dos cerditos corrieron a la casa de ladrillos.El lobo llegó a la casa de ladrillos y dijo: —¡Cerditos, cerditos, déjenme entrar! —¡No, no, por el pelo de mi barbilla no te dejaremos entrar! —respondieron los cerditos. —Entonces soplaré y soplaré y su casa derribaré —gritó el lobo. Pero por más que sopló, no pudo derribar la casa de ladrillos.Frustrado, el lobo intentó entrar por la chimenea, pero los cerditos encendieron una gran hoguera y cuando el lobo bajó, se quemó y huyó para no volver jamás. Los tres cerditos vivieron seguros y felices en la casa de ladrillos, aprendiendo que el trabajo arduo y bien hecho siempre da buenos resultados.</p>
+  </div>
+</div>
+
+<!-- Tarjeta de cuento 2 -->
+<div class="bg-white p-4 rounded shadow-md m-4 contrast-bg movie-card" aria-labelledby="movieTitle2">
+  <img src="imagenes/La Ratita Presumida.jpg" alt="Cartel de la película 2" class="w-full object-cover rounded-t-md">
+  <div class="mt-4 movie-details">
+    <h3 id="movieTitle2" class="text-lg font-bold contrast-text">La Ratita Presumida</h3>
+    <button onclick="toggleFullStory('story2')" aria-label="Leer descripción del cuento 2" class="bg-blue-500 text-white p-2 rounded highlight">📖 Leer</button>
+    <button onclick="speakText('Había una vez una ratita muy presumida que vivía en una casita pequeña y coqueta. Un día, mientras barría la entrada de su casa, encontró una moneda de oro.—¡Qué suerte la mía! —exclamó la ratita, muy contenta—. ¿Qué haré con esta moneda?Pensó y pensó hasta que decidió ir al mercado a comprarse un lazo para estar más guapa. Compró un lazo rojo brillante y se lo colocó en la cola. Cuando regresó a su casa, se sentó en la ventana a lucirse y pronto comenzaron a llegar los pretendientes.Primero llegó un gallo: —Ratita, ratita, ¿te quieres casar conmigo? —¿Y qué harás por mí? —preguntó la ratita. —¡Cantaré cada mañana para ti! —dijo el gallo. —No, no quiero, tu canto es muy ruidoso —respondió la ratita.Después vino un cerdo: —Ratita, ratita, ¿te quieres casar conmigo? —¿Y qué harás por mí? —preguntó la ratita. —¡Oink, oink! —gruñó el cerdo. —No, no quiero, haces mucho ruido —respondió la ratita.Finalmente, apareció un ratón: —Ratita, ratita, ¿te quieres casar conmigo? —¿Y qué harás por mí? —preguntó la ratita. —Seré muy bueno contigo y te cuidaré siempre —dijo el ratón.La ratita aceptó, pero pronto descubrió que el ratón era malvado y quería comérsela. Afortunadamente, un gato que pasaba por allí oyó los gritos de la ratita y la rescató. El ratón fue ahuyentado y la ratita aprendió que no debía confiar en las apariencias.')" aria-label="Escuchar descripción del cuento 2" class="bg-blue-500 text-white p-2 rounded highlight">🔊 Leer</button>
+    <p id="story2" class="text-gray-300 mt-2 full-story">Había una vez una ratita muy presumida que vivía en una casita pequeña y coqueta. Un día, mientras barría la entrada de su casa, encontró una moneda de oro.—¡Qué suerte la mía! —exclamó la ratita, muy contenta—. ¿Qué haré con esta moneda?Pensó y pensó hasta que decidió ir al mercado a comprarse un lazo para estar más guapa. Compró un lazo rojo brillante y se lo colocó en la cola. Cuando regresó a su casa, se sentó en la ventana a lucirse y pronto comenzaron a llegar los pretendientes.Primero llegó un gallo: —Ratita, ratita, ¿te quieres casar conmigo? —¿Y qué harás por mí? —preguntó la ratita. —¡Cantaré cada mañana para ti! —dijo el gallo. —No, no quiero, tu canto es muy ruidoso —respondió la ratita.Después vino un cerdo: —Ratita, ratita, ¿te quieres casar conmigo? —¿Y qué harás por mí? —preguntó la ratita. —¡Oink, oink! —gruñó el cerdo. —No, no quiero, haces mucho ruido —respondió la ratita.Finalmente, apareció un ratón: —Ratita, ratita, ¿te quieres casar conmigo? —¿Y qué harás por mí? —preguntó la ratita. —Seré muy bueno contigo y te cuidaré siempre —dijo el ratón.La ratita aceptó, pero pronto descubrió que el ratón era malvado y quería comérsela. Afortunadamente, un gato que pasaba por allí oyó los gritos de la ratita y la rescató. El ratón fue ahuyentado y la ratita aprendió que no debía confiar en las apariencias.</p>
+  </div>
+</div>
+
+<!-- Tarjeta de cuento 3 -->
+<div class="bg-white p-4 rounded shadow-md m-4 contrast-bg movie-card" aria-labelledby="movieTitle3">
+  <img src="imagenes/la-cenicienta.jpg" alt="Cartel de la película 3" class="w-full object-cover rounded-t-md">
+  <div class="mt-4 movie-details">
+    <h3 id="movieTitle3" class="text-lg font-bold contrast-text">La Cenicienta</h3>
+    <button onclick="toggleFullStory('story3')" aria-label="Leer descripción del cuento 3" class="bg-blue-500 text-white p-2 rounded highlight">📖 Leer</button>
+    <button onclick="speakText(' Érase una vez una joven llamada Cenicienta que vivía con su cruel madrastra y sus dos hermanastras. La trataban como una sirvienta, obligándola a hacer todas las tareas del hogar. Un día, el rey organizó un baile para que su hijo, el príncipe, eligiera esposa. Cenicienta quería ir, pero su madrastra se lo prohibió.Mientras lloraba en la cocina, apareció su hada madrina. Con un toque de su varita mágica, transformó una calabaza en una carroza, ratones en caballos, y vistió a Cenicienta con un hermoso vestido y zapatos de cristal. Le advirtió que debía regresar antes de la medianoche, cuando el hechizo se rompería.En el baile, el príncipe quedó deslumbrado por la belleza de Cenicienta y bailó con ella toda la noche. Al sonar la medianoche, Cenicienta huyó y en su prisa, perdió uno de sus zapatos de cristal. El príncipe, decidido a encontrarla, recorrió el reino con el zapato, buscándola.Llegó a la casa de Cenicienta, y aunque las hermanastras intentaron calzarse el zapato, no les quedaba. Finalmente, Cenicienta se lo probó y le quedó perfecto. El príncipe la reconoció y se casaron. Cenicienta perdonó a su madrastra y hermanastras, y vivió feliz en el palacio con su príncipe.')" aria-label="Escuchar descripción del cuento 3" class="bg-blue-500 text-white p-2 rounded highlight">🔊 Leer</button>
+    <p id="story3" class="text-gray-300 mt-2 full-story">Érase una vez una joven llamada Cenicienta que vivía con su cruel madrastra y sus dos hermanastras. La trataban como una sirvienta, obligándola a hacer todas las tareas del hogar. Un día, el rey organizó un baile para que su hijo, el príncipe, eligiera esposa. Cenicienta quería ir, pero su madrastra se lo prohibió.Mientras lloraba en la cocina, apareció su hada madrina. Con un toque de su varita mágica, transformó una calabaza en una carroza, ratones en caballos, y vistió a Cenicienta con un hermoso vestido y zapatos de cristal. Le advirtió que debía regresar antes de la medianoche, cuando el hechizo se rompería.En el baile, el príncipe quedó deslumbrado por la belleza de Cenicienta y bailó con ella toda la noche. Al sonar la medianoche, Cenicienta huyó y en su prisa, perdió uno de sus zapatos de cristal. El príncipe, decidido a encontrarla, recorrió el reino con el zapato, buscándola.Llegó a la casa de Cenicienta, y aunque las hermanastras intentaron calzarse el zapato, no les quedaba. Finalmente, Cenicienta se lo probó y le quedó perfecto. El príncipe la reconoció y se casaron. Cenicienta perdonó a su madrastra y hermanastras, y vivió feliz en el palacio con su príncipe.</p>
+  </div>
+</div>
+
+<!-- Tarjeta de cuento 4 -->
+<div class="bg-white p-4 rounded shadow-md m-4 contrast-bg movie-card" aria-labelledby="movieTitle4">
+  <img src="imagenes/Pinocho.jpg" alt="Cartel de la película 4" class="w-full object-cover rounded-t-md">
+  <div class="mt-4 movie-details">
+    <h3 id="movieTitle4" class="text-lg font-bold contrast-text">Pinocho</h3>
+    <button onclick="toggleFullStory('story4')" aria-label="Leer descripción del cuento 4" class="bg-blue-500 text-white p-2 rounded highlight">📖 Leer</button>
+    <button onclick="speakText('En un pequeño pueblo, vivía un carpintero llamado Geppetto. Un día, decidió crear un muñeco de madera y lo llamó Pinocho. Esa noche, un hada azul le concedió a Pinocho el don de la vida, pero le dijo que para convertirse en un niño de verdad debía demostrar ser valiente, sincero y generoso.Al día siguiente, Geppetto se sorprendió al ver que Pinocho había cobrado vida y lo envió a la escuela. Pero en lugar de ir a la escuela, Pinocho se dejó influenciar por malas compañías y terminó en un teatro de marionetas. El dueño del teatro, Stromboli, lo encerró, pero el hada azul lo rescató. Le advirtió que no debía mentir, ya que su nariz crecería cada vez que lo hiciera.Pinocho prometió portarse bien, pero pronto volvió a meterse en problemas. Fue engañado por unos timadores que lo llevaron a la Isla de los Juegos, donde los niños se transformaban en burros. Con la ayuda del hada azul y de su conciencia, Pepito Grillo, Pinocho logró escapar y regresó a casa.Al llegar, descubrió que Geppetto había salido a buscarlo y había sido tragado por una ballena. Con valentía, Pinocho se lanzó al mar y logró rescatar a su padre. El hada azul, al ver su valentía y amor, lo transformó en un niño de verdad. Pinocho y Geppetto vivieron felices juntos. ')" aria-label="Escuchar descripción del cuento 4" class="bg-blue-500 text-white p-2 rounded highlight">🔊 Leer</button>
+    <p id="story4" class="text-gray-300 mt-2 full-story">En un pequeño pueblo, vivía un carpintero llamado Geppetto. Un día, decidió crear un muñeco de madera y lo llamó Pinocho. Esa noche, un hada azul le concedió a Pinocho el don de la vida, pero le dijo que para convertirse en un niño de verdad debía demostrar ser valiente, sincero y generoso.
+
+      Al día siguiente, Geppetto se sorprendió al ver que Pinocho había cobrado vida y lo envió a la escuela. Pero en lugar de ir a la escuela, Pinocho se dejó influenciar por malas compañías y terminó en un teatro de marionetas. El dueño del teatro, Stromboli, lo encerró, pero el hada azul lo rescató. Le advirtió que no debía mentir, ya que su nariz crecería cada vez que lo hiciera.
+      
+      Pinocho prometió portarse bien, pero pronto volvió a meterse en problemas. Fue engañado por unos timadores que lo llevaron a la Isla de los Juegos, donde los niños se transformaban en burros. Con la ayuda del hada azul y de su conciencia, Pepito Grillo, Pinocho logró escapar y regresó a casa.
+      
+      Al llegar, descubrió que Geppetto había salido a buscarlo y había sido tragado por una ballena. Con valentía, Pinocho se lanzó al mar y logró rescatar a su padre. El hada azul, al ver su valentía y amor, lo transformó en un niño de verdad. Pinocho y Geppetto vivieron felices juntos.</p>
+  </div>
+</div>
+
+<!-- Tarjeta de cuento 5 -->
+<div class="bg-white p-4 rounded shadow-md m-4 contrast-bg movie-card" aria-labelledby="movieTitle5">
+  <img src="imagenes/El zapatero y los duendes.jpg" alt="Cartel de la película 5" class="w-full object-cover rounded-t-md">
+  <div class="mt-4 movie-details">
+    <h3 id="movieTitle5" class="text-lg font-bold contrast-text">El zapatero y los duendes</h3>
+    <button onclick="toggleFullStory('story5')" aria-label="Leer descripción del cuento 5" class="bg-blue-500 text-white p-2 rounded highlight">📖 Leer</button>
+    <button onclick="speakText('Había una vez un zapatero muy pobre que vivía con su esposa. A pesar de trabajar arduamente, apenas tenían para comer. Un día, solo le quedaba cuero suficiente para hacer un par de zapatos. El zapatero cortó el cuero y lo dejó listo para trabajar al día siguiente.Esa noche, mientras dormían, dos pequeños duendes entraron a la tienda y confeccionaron un par de zapatos hermosos. Al día siguiente, el zapatero encontró los zapatos terminados y los vendió por un buen precio. Con el dinero, compró más cuero.La noche siguiente, los duendes volvieron y fabricaron más zapatos. Esto continuó noche tras noche, y pronto el zapatero y su esposa salieron de la pobreza. Intrigados por saber quién les ayudaba, una noche se escondieron en la tienda y vieron a los duendes trabajando.Agradecidos, decidieron hacerles ropa nueva. Dejaron la ropa sobre la mesa y, al llegar los duendes, se la probaron y estaban tan felices que nunca más regresaron. A partir de ese momento, el zapatero y su esposa vivieron prósperamente, siempre recordando con gratitud la ayuda de los duendes.')" aria-label="Escuchar descripción del cuento 5" class="bg-blue-500 text-white p-2 rounded highlight">🔊 Leer</button>
+    <p id="story5" class="text-gray-300 mt-2 full-story">Había una vez un zapatero muy pobre que vivía con su esposa. A pesar de trabajar arduamente, apenas tenían para comer. Un día, solo le quedaba cuero suficiente para hacer un par de zapatos. El zapatero cortó el cuero y lo dejó listo para trabajar al día siguiente.Esa noche, mientras dormían, dos pequeños duendes entraron a la tienda y confeccionaron un par de zapatos hermosos. Al día siguiente, el zapatero encontró los zapatos terminados y los vendió por un buen precio. Con el dinero, compró más cuero.La noche siguiente, los duendes volvieron y fabricaron más zapatos. Esto continuó noche tras noche, y pronto el zapatero y su esposa salieron de la pobreza. Intrigados por saber quién les ayudaba, una noche se escondieron en la tienda y vieron a los duendes trabajando.Agradecidos, decidieron hacerles ropa nueva. Dejaron la ropa sobre la mesa y, al llegar los duendes, se la probaron y estaban tan felices que nunca más regresaron. A partir de ese momento, el zapatero y su esposa vivieron prósperamente, siempre recordando con gratitud la ayuda de los duendes.</p>
+  </div>
+</div>
+
+  </section>
+  <!-- Pie de página -->
+  <footer class="bg-slate-800 text-white p-4" role="contentinfo">
+    <div class="container mx-auto flex justify-center items-center">
+      <p class="text-sm">&copy; 2023 Cuenta Cuentos - Todos los derechos reservados</p>
+    </div>
+  </footer>
+  <!-- Scripts -->
+  <script>
+    // Variable global para almacenar la instancia de síntesis de voz
+var synth = window.speechSynthesis;
+// Variable global para almacenar el último texto que se leyó
+var lastUtterance = null;
+
+// Función para leer el texto en voz alta
+function speakText(text) {
+  // Verificar si hay una síntesis de voz en curso
+  if (synth.speaking) {
+    // Detener la síntesis de voz actual
+    synth.cancel();
+    // Restablecer la última instancia de síntesis de voz
+    lastUtterance = null;
+  } else {
+    // Si no se está hablando, iniciar una nueva síntesis de voz
+    var utterance = new SpeechSynthesisUtterance(text);
+    // Almacenar la instancia de síntesis de voz actual
+    lastUtterance = utterance;
+    // Iniciar la síntesis de voz
+    synth.speak(utterance);
+  }
+}
+
+// Función para detener la síntesis de voz actual
+function stopSpeaking() {
+  // Verificar si hay una síntesis de voz en curso
+  if (synth.speaking) {
+    // Detener la síntesis de voz actual
+    synth.cancel();
+    // Restablecer la última instancia de síntesis de voz
+    lastUtterance = null;
+  }
+}
+
+// Función para mostrar u ocultar el texto completo del cuento
+function toggleFullStory(storyId) {
+  var story = document.getElementById(storyId);
+  story.classList.toggle('show');
+}
+
+  function toggleHighContrast() {
+    var body = document.body;
+    body.classList.toggle('alto-contraste');
+  }
+
+
+
+  </script>
+</body>
+</html>
